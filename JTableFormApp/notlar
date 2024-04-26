@@ -1,0 +1,50 @@
+1. Adım: Olay Yakalama:
+
+private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) metodu, txtSearch adlı metin kutusunda bir tuş bırakıldığında 
+tetiklenen olayı ele alır.
+evt parametresi, basılan ve bırakılan tuşla ilgili bilgileri içeren bir KeyEvent nesnesidir.
+
+2. Arama Metnini Alma:
+
+String searchText = txtSearch.getText(); satırı, txtSearch metin kutusuna girilen metni searchText değişkenine atar.
+Bu metin, tablo satırlarını filtrelemek için kullanılacaktır.
+
+3. Tablo Satır Sıralama:
+
+TableRowSorter<DefaultTableModel> tableRowSorter = new TableRowSorter<DefaultTableModel>(model); satırı, mevcut tablo modeli (model) kullanılarak yeni bir TableRowSorter nesnesi oluşturur.
+TableRowSorter, bir JTable bileşenindeki satırları sıralamaya ve filtrelemeye yardımcı olur.
+
+4. Satır Sıralama Ayarlama:
+
+tblCustomers.setRowSorter(tableRowSorter); satırı, yeni oluşturulan tableRowSorter'ı tblCustomers JTable bileşenine atar.
+Bu, tablonun satırları filtrelemek için bu sıralama aracını kullanmasını sağlar.
+
+5. Regex ile Filtreleme:
+
+tableRowSorter.setRowFilter(RowFilter.regexFilter(searchText)); satırı, tablo satırları üzerinde bir filtre ayarlamak için kullanılır.
+searchText metnine dayalı bir düzenli ifade kullanarak bir RowFilter oluşturur.
+Bu filtre, yalnızca arama metnindeki düzenli ifadeyle eşleşen satırları gösterecektir.
+
+4.İŞLEM DETAY
+
+tblCustomers.setRowSorter(tableRowSorter); Satırının Detaylı Açıklaması:
+Bu satır, tblCustomers adlı JTable bileşeninin satır sıralama ve filtreleme işlemlerini tableRowSorter nesnesine devretmesini sağlar. 
+Daha net bir ifadeyle:
+
+1. Neden Gerekli?:
+
+Tablolar, büyük miktarda veri içerdiğinde karmaşık ve okunması zor hale gelebilir. TableRowSorter nesnesi, 
+bu karmaşıklığı yönetmenize yardımcı olur. Sıralama ve filtreleme gibi işlemleri kullanarak, tablodaki verileri 
+daha kolay organize ve analiz etmenizi sağlar.
+
+2. Nasıl Çalışır?:
+
+tblCustomers parametresi, satır sıralama ve filtreleme işlemlerinin uygulanacağı JTable bileşenini belirtir.
+tableRowSorter parametresi, TableRowSorter nesnesini temsil eder. Bu nesne, sıralama ve filtreleme kurallarını içerir.
+3. İşlem Adımları:
+
+Bağlama: setRowSorter metodu, tblCustomers bileşenini tableRowSorter nesnesine bağlar.
+Yetkilendirme: Bu bağlantı kurulduktan sonra, tblCustomers bileşeni satır sıralama ve filtreleme işlemleri için tableRowSorter 
+nesnesini kullanmaya yetkilendirilir.
+Sıralama ve Filtreleme: Artık, tableRowSorter nesnesi, tblCustomers bileşenindeki satırları sıralamak ve filtrelemek için kullanılan 
+birincil araç haline gelir.
